@@ -1,4 +1,4 @@
-FROM ruby:3-alpine
+FROM ruby:3.2.2-alpine
 
 #RUN apk add --update --no-cache --virtual run-dependencies \
 #		build-base
