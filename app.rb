@@ -4,8 +4,6 @@ require 'json'
 require 'sinatra'
 
 get '/' do
-  pp params: params
-  puts '*' * 100
   erb template
 end
 
@@ -14,14 +12,17 @@ post '/' do
   erb template
 end
 
-def template
-  @ip = `curl ifconfig.me`
-  @container_id = `cat /etc/hostname`.gsub("\n", '')
-  @content = File.read('disk/text.txt')
-  File.read('index.html.erb')
-end
+def ip = @ip ||= `curl ifconfig.me`
+def container_id = @container_id ||= `cat /etc/hostname`.gsub("\n", '')
+def template = File.read('index.html.erb')
 
 def write(string)
   string += "\n" unless string.end_with? "\n"
   File.write('disk/text.txt', string, mode: 'a')
+end
+
+def content
+  File.read('disk/text.txt')
+rescue
+  nil
 end

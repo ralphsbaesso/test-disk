@@ -1,7 +1,8 @@
 FROM ruby:3.2.2-alpine
 
-#RUN apk add --update --no-cache --virtual run-dependencies \
-#		build-base
+RUN apk add --update --no-cache --virtual run-dependencies \
+		build-base \
+    curl
 
 RUN mkdir -p app
 WORKDIR app

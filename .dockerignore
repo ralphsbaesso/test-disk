@@ -1,0 +1,11 @@
+.byebug_history
+.git
+.gitignore
+.dockerignore
+.idea
+
+/disk/*
+!/disk/.keep
+
+Dockerfile
+REAME.md

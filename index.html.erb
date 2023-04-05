@@ -30,7 +30,7 @@
             width: 100%;
             /*height: 200px;*/
         }
-        input[type=submit] {
+        input[type=submit], a.reload {
             background-color: #fff;
             border: none;
             border-radius: 5px;
@@ -39,7 +39,7 @@
             font-size: 18px;
             padding: 10px 20px;
         }
-        input[type=submit]:hover {
+        input[type=submit]:hover, a.reload:hover {
             background-color: #333;
             color: #fff;
         }
@@ -49,8 +49,8 @@
 
   <div class="container">
       <h1 style="text-align:center">Test Disk</h1>
-      <h4 style="text-align:center"><b>IP: </b><%= @ip %></h4>
-      <h4 style="text-align:center"><b>Container id: </b><%= @container_id %></h4>
+      <h4 style="text-align:center"><b>IP: </b><%= ip %></h4>
+      <h4 style="text-align:center"><b>Container id: </b><%= container_id %></h4>
 
       <form method="post" action="/">
           <label for="message">Message:</label>
@@ -58,14 +58,15 @@
 
           <div style="text-align:center">
               <input type="submit" value="Enviar"/>
+              <a href="/" class="reload">Recarregar</a>
           </div>
       </form>
 
-      <% if @content && @content.size > 0 %>
+      <% if content && content.size > 0 %>
         <hr>
-        <% @content.split("\n").reverse.each_with_index do |message, index| %>
+        <% content.split("\n").each_with_index.reverse_each do |message, index| %>
           <small>
-            <%= index %> -
+            <%= index + 1 %> -
             <strong><%= message %></strong>
           </small>
           <br>
